@@ -25,7 +25,7 @@ func TestNoAuthHeaderError(t *testing.T) {
 	_, got := GetAPIKey(header)
 	want := errors.New("no authorization header included")
 
-	if got != want {
+	if got.Error() != want.Error() {
 		t.Errorf("got %q want %q", got, want)
 	}
 }
@@ -37,7 +37,7 @@ func TestMalformedAuthHeaderError(t *testing.T) {
 	_, got := GetAPIKey(header)
 	want := errors.New("malformed authorization header")
 
-	if got != want {
+	if got.Error() != want.Error() {
 		t.Errorf("got %q want %q", got, want)
 	}
 }
